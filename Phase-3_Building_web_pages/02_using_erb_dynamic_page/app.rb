@@ -18,7 +18,7 @@ class Application < Sinatra::Base
 
     @albums = album.all
 
-    return erb(:album)
+    return erb(:all_albums)
   end
 
   get '/albums/:id' do
