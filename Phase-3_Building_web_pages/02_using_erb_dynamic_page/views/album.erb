@@ -1,17 +1,10 @@
 <html>
   <head></head>
   <body>
-    <h1>Albums</h1>
-
-    <div>
-      <% @albums.each do |album| %> 
-        <p> 
-          Title: <%= album.title %>,
-          Release year: <%= album.release_year%>
-        <p>
-      <% end %>
-    </div>
-
-    <!-- ... -->
+    <h1><%= @album.title %></h1>
+    <p>
+      Release year: <%= @album.release_year %>
+      Artist: <%= @artist.name %>
+    </p>
   </body>
 </html>
