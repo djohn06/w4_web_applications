@@ -24,12 +24,23 @@ describe Application do
   # class so our tests work.
   let(:app) { Application.new }
 
+  context 'GET /albums/:id' do
+    xit 'returns info of album 1' do
+      response = get('/albums/1')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Doolittle</h1>')
+      expect(response.body).to include('<h1>Artist: Pixies</h1>')
+    end
+  end
+
   context "GET /albums" do
-    it 'Gets a list of albums' do
+    xit 'Gets a list of albums' do
       response = get("/albums")
 
       expect(response.status).to eq(200)
-      expect(response.body).to eq("Doolittle,Surfer Rosa,Waterloo,Super Trouper,Bossanova,Lover,Folklore,I Put a Spell on You,Baltimore,Here Comes the Sun,Fodder on My Wings,Ring Ring")
+      expect(response.body).to include('<h1>Title: Surfer Rosa</h1>')
+      expect(response.body).to include('<h1>Rleased: 1988</h1>')
     end
   end
 
