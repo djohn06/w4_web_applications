@@ -8,6 +8,11 @@ describe Application do
     let(:app) { Application.new }
   
     context "GET /" do
+        it "contains a h1 title" do
+            response = get('/')
+            expect(response.body).to include('<h1>Hello!</h1>')
+        end
+
         it 'returns all names' do
             response = get('/names')
       
