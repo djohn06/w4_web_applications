@@ -1,6 +1,6 @@
-## Changes made in Phase 2 | 02 & 03 - Building Routes & Test-driving
+# Changes made in Phase 2 | 02 & 03 - Building Routes & Test-driving
 
-#### Created new test case in app_spec:
+## Created new test case in app_spec:
 
 ```ruby
 context "GET /" do
@@ -10,9 +10,9 @@ context "GET /" do
         end
 ```
 
-#### Created 'views' folder and index.erb
+## Created 'views' folder and index.erb
 
-**Within the index.erb file**
+**Within the index.erb file:**
 
 ```html
 <html>
