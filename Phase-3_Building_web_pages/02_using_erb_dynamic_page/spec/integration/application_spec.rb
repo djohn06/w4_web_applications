@@ -25,22 +25,22 @@ describe Application do
   let(:app) { Application.new }
 
   context 'GET /albums/:id' do
-    xit 'returns info of album 1' do
+    it 'returns info of album 1' do
       response = get('/albums/1')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Doolittle</h1>')
-      expect(response.body).to include('<h1>Artist: Pixies</h1>')
+      expect(response.body).to include('Doolittle')
+      expect(response.body).to include('Artist: Pixies')
     end
   end
 
   context "GET /albums" do
-    xit 'Gets a list of albums' do
+    it 'Gets a list of albums' do
       response = get("/albums")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Title: Surfer Rosa</h1>')
-      expect(response.body).to include('<h1>Rleased: 1988</h1>')
+      expect(response.body).to include('Title: Surfer Rosa')
+      expect(response.body).to include('Release year: 1988')
     end
   end
 
