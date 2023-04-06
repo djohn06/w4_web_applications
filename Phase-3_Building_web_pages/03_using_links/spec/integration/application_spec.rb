@@ -24,9 +24,9 @@ describe Application do
   # class so our tests work.
   let(:app) { Application.new }
 
-  context 'GET /albums/:id' do
+  context 'GET /album/:id' do
     it 'returns info of album 1' do
-      response = get('/albums/1')
+      response = get('/album/1')
 
       expect(response.status).to eq(200)
       expect(response.body).to include('Doolittle')
@@ -39,8 +39,9 @@ describe Application do
       response = get("/albums")
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('Title: Surfer Rosa')
-      expect(response.body).to include('Release year: 1988')
+      expect(response.body).to include('<a href="/album/2">Title: Surfer Rosa</a>')
+      expect(response.body).to include('<a href="/album/3">Title: Waterloo</a>')
+      expect(response.body).to include('<a href="/album/4">Title: Super Trouper</a>')
     end
   end
 
@@ -61,7 +62,19 @@ describe Application do
       response = get("/artists")
 
       expect(response.status).to eq(200)
-      expect(response.body).to eq("Pixies, ABBA, Taylor Swift, Nina Simone")
+      expect(response.body).to include('<a href="/artist/1">Name: Pixies</a>')
+      expect(response.body).to include('<a href="/artist/2">Name: ABBA</a>')
+      expect(response.body).to include('<a href="/artist/3">Name: Taylor Swift</a>')
+    end
+  end
+
+  context "GET artist/:id" do
+    it "returns html page with details of artist" do
+      response = get("/artist/1")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Name: Pixies')
+      expect(response.body).to include('Genre: Rock')
     end
   end
 
