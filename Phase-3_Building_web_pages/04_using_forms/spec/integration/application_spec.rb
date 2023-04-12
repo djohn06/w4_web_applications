@@ -24,6 +24,29 @@ describe Application do
   # class so our tests work.
   let(:app) { Application.new }
 
+  context "GET /album/new" do
+    it "should validate album parameters" do
+      response = post(
+        '/albums',
+        invalid_artist_title: 'OK Computer',
+        another_invalid_thing: 123
+      )
+
+      expect(response.status).to eq(400)
+    end
+
+    it "returns the albums form page" do
+      response = get('/album/new')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Add an album</h1>')
+      expect(response.body).to include('<form action="/albums" method="POST">')
+      expect(response.body).to include('<input type="text" name="title" />')
+      expect(response.body).to include('<input type="text" name="release_year" />')
+      expect(response.body).to include('<input type="text" name="artist_id" />')
+    end
+  end
+
   context 'GET /album/:id' do
     it 'returns info of album 1' do
       response = get('/album/1')
@@ -75,6 +98,18 @@ describe Application do
       expect(response.status).to eq(200)
       expect(response.body).to include('Name: Pixies')
       expect(response.body).to include('Genre: Rock')
+    end
+  end
+
+  context "GET /artist/new" do
+    it "returns a form page for adding new artist"do
+      response = get("/artist/new")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Add an artist</h1>')
+      expect(response.body).to include('<form action="/artists" method="POST">')
+      expect(response.body).to include('<input type="text" name="name" />')
+      expect(response.body).to include('<input type="text" name="genre" />')
     end
   end
 
